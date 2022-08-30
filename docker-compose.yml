@@ -1,0 +1,54 @@
+# Taken from https://medium.com/swlh/beautiful-load-testing-with-k6-and-docker-compose-4454edb3a2e3
+version: '3.4'
+
+services:
+  haproxy:
+    container_name: haproxy-lb
+    build:
+      context: .
+      dockerfile: haproxy/Dockerfile
+    restart: always
+    ports:
+      - "80:80"
+      - "8480:8480"
+    networks:
+      public_net:
+          ipv4_address: 192.0.0.33
+
+  api_1:
+      container_name: api_1
+      build:
+        context: .
+        dockerfile: Dockerfile
+        args:
+          app_id: 1
+      environment:
+        - APPLICATION_ID=1
+      ports:
+        - 8081:8080
+      networks:
+        public_net:
+          ipv4_address: 192.0.0.11
+
+  api_2:
+      container_name: api_2
+      build:
+        context: .
+        dockerfile: Dockerfile
+        args:
+          app_id: 2
+      environment:
+        - APPLICATION_ID=2
+      ports:
+        - 8082:8080
+      networks:
+        public_net:
+          ipv4_address: 192.0.0.12
+
+networks:
+  public_net:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.0.0.0/24
