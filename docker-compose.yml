@@ -1,4 +1,5 @@
 # Taken from https://medium.com/swlh/beautiful-load-testing-with-k6-and-docker-compose-4454edb3a2e3
+# This docker-compose file sets up a HaProxy and 3 simple APIs
 version: '3.4'
 
 services:
@@ -44,6 +45,36 @@ services:
       networks:
         public_net:
           ipv4_address: 192.0.0.12
+
+  api_3:
+      container_name: api_3
+      build:
+        context: .
+        dockerfile: Dockerfile
+        args:
+          app_id: 3
+      environment:
+        - APPLICATION_ID=3
+      ports:
+        - 8082:8080
+      networks:
+        public_net:
+          ipv4_address: 192.0.0.13
+
+  api_4:
+      container_name: api_4
+      build:
+        context: .
+        dockerfile: Dockerfile
+        args:
+          app_id: 4
+      environment:
+        - APPLICATION_ID=4
+      ports:
+        - 8082:8080
+      networks:
+        public_net:
+          ipv4_address: 192.0.0.14
 
 networks:
   public_net:

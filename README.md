@@ -5,7 +5,10 @@ It uses:
 - Python (FastAPI)
 - Docker
 
-(links to be added)
+This project builds up a Load Balancer (HaProxy) and 3 Python APIs.\
+The Load Balancer has 8 APIs by default.\
+Using the docker-compose.yaml file 
+
 ### How to install
 The following command will install K6:
 ```shell
