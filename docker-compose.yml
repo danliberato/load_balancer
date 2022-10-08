@@ -25,8 +25,6 @@ services:
           app_id: 1
       environment:
         - APPLICATION_ID=1
-      ports:
-        - 8081:8080
       networks:
         public_net:
           ipv4_address: 192.0.0.11
@@ -40,8 +38,6 @@ services:
           app_id: 2
       environment:
         - APPLICATION_ID=2
-      ports:
-        - 8082:8080
       networks:
         public_net:
           ipv4_address: 192.0.0.12
@@ -55,8 +51,6 @@ services:
           app_id: 3
       environment:
         - APPLICATION_ID=3
-      ports:
-        - 8082:8080
       networks:
         public_net:
           ipv4_address: 192.0.0.13
@@ -70,11 +64,22 @@ services:
           app_id: 4
       environment:
         - APPLICATION_ID=4
-      ports:
-        - 8082:8080
       networks:
         public_net:
           ipv4_address: 192.0.0.14
+
+  api_5:
+      container_name: api_5
+      build:
+        context: .
+        dockerfile: Dockerfile
+        args:
+          app_id: 5
+      environment:
+        - APPLICATION_ID=5
+      networks:
+        public_net:
+          ipv4_address: 192.0.0.15
 
 networks:
   public_net:

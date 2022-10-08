@@ -4,11 +4,13 @@ import os
 
 app = FastAPI()
 
-application_id = os.environ['APPLICATION_ID']
+# Retrieve app id from env var
+app_id = os.environ['APPLICATION_ID']
 
-print(f"Running as Microservice #{application_id}")
+print(f"Running as API #{app_id}")
 
 
 @app.get("/")
 async def get_service_id():
-    return {"message": f"Microservice #{application_id}"}
+    # Response with the API id
+    return {"message": f"API #{app_id}"}

@@ -23,8 +23,8 @@ case "$1" in
 
     *)
       echo "Options are:"
-      echo "start | To create a new service instance (requires one argument)"
-      echo "stop | To stop a service instance (requires one argument)"
+      echo "start {appId} | To create a new service instance (argument required)"
+      echo "stop {appId} | To stop a service instance (argument required)"
       echo "Arguments are service IDs, and must be between 1 and 9"
     ;;
 esac

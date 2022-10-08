@@ -1,18 +1,28 @@
-# Load Balancer
-This project is a simple Load Balancer.
-It uses:
+# Load Balancer project
+This project is a simple Load Balancer composed by:
 - HaProxy
-- Python (FastAPI)
+- FastAPI
 - Docker
+- K6 (to run load tests)
 
-This project builds up a Load Balancer (HaProxy) and 3 Python APIs.\
-The Load Balancer has 8 APIs by default.\
-Using the docker-compose.yaml file 
+### What I'm going to find here?
+This project builds up a Load Balancer (HaProxy) and HTTP APIs. \
+The HaProxy has up to 9 APIs.\
+The docker-compose file that will set up the LB and 5 APIs (by default).\
+A file (scripts/instance_commands.sh) which is meant to start/stop each application individually.
 
-### How to install
+### Requirements
+- Docker 20.18.10+
+- Docker-compose 1.27.4+
+
+### How to set up?
 The following command will install K6:
 ```shell
 $ sudo ./setup.sh
+```
+And if you want to install the Python dependencies related to this project, simply run:
+```shell
+$ sudo ./setup.sh dev
 ```
 
 ### Running a new instance
@@ -31,6 +41,3 @@ $ sh scripts/instance_commands.sh stop X
 ```shell
 $ k6 run dsd.js
 ```
-
-## To improve
-Add some CPU usage heuristic to balancing the load;
