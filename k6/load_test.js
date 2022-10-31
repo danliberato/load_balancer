@@ -3,8 +3,7 @@ import { check, sleep } from 'k6';
 
 export const options = {
   stages: [
-    { duration: '10s', target: 5 },
-    { duration: '5m', target: 5 },
+    { duration: '5m', target: 1 },
   ],
 };
 
@@ -13,7 +12,7 @@ export default function () {
   if(res.status == 200){
     console.log(res.json('message'))
   }else{
-    console.log("Error | status =" + res.status);
+    console.log("Error | status = " + res.status);
   }
   sleep(1);
 }

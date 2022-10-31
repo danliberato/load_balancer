@@ -14,6 +14,7 @@ A file (scripts/instance_commands.sh) which is meant to start/stop each applicat
 ### Requirements
 - Docker 20.18.10+
 - Docker-compose 1.27.4+
+- Ubuntu
 
 ### How to set up?
 The following command will install K6:
